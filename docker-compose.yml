@@ -1,0 +1,35 @@
+services:
+  django-backend:
+    build:
+      context: ./django-backend
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django-backend/app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+
+
+#   angular-frontend:
+#     build:
+#       context: ./angular-frontend
+#     ports:
+#       - "4200:4200"
+#     volumes:
+#       - ./angular-frontend:/app
+
+#   db:
+#     image: postgres:15
+#     environment:
+#       POSTGRES_USER: django
+#       POSTGRES_PASSWORD: password
+#       POSTGRES_DB: django_db
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - db_data:/var/lib/postgresql/data
+
+# volumes:
+#   db_data:
